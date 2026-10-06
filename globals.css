@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; background: #070914; }
+body { color: #fff; font-family: var(--font-sans), system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.glass { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.panel { background: rgba(10,14,40,.58); border: 1px solid rgba(255,255,255,.16); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); }
+
+@keyframes drift { from { transform: translateX(-4%); } to { transform: translateX(10%); } }
+.drift { animation: drift 40s ease-in-out infinite alternate; }
+@keyframes twinkle { 0%,100% { opacity:.35; } 50% { opacity:.8; } }
+
+.word-wrapper { display:inline-block; overflow:hidden; vertical-align:bottom; padding-bottom:.12em; margin-bottom:-.12em; }
+.word-inner { display:inline-block; opacity:0; transform:translateY(105%); filter:blur(14px); animation: word-reveal 1.3s cubic-bezier(.05,.9,.1,1) forwards; }
+@keyframes word-reveal { 0%{opacity:0;transform:translateY(105%);filter:blur(14px);} 30%{opacity:1;} 100%{opacity:1;transform:none;filter:blur(0);} }
+
+.report h1 { font-family: var(--font-serif); font-size: 2.6rem; line-height: 1; letter-spacing: -.02em; margin-bottom: 1.5rem; }
+.report h2 { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 400; letter-spacing: -.01em; margin: 2.2rem 0 .5rem; }
+.report p, .report li { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,.86); }
+.report p { margin: .8rem 0; }
+.report ul { list-style: disc; padding-left: 1.3rem; } .report ol { list-style: decimal; padding-left: 1.3rem; }
+.report a { color: #C9D6FF; text-decoration: none; }
+.report a.cite { font-size:.7rem; vertical-align:super; padding:0 .25rem; border-radius:6px; background:rgba(255,255,255,.16); }
+.report a.cite:hover { background: rgba(255,255,255,.3); }
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .word-inner { opacity:1; transform:none; filter:none; } }
